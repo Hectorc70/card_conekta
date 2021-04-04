@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Opciones extends StatelessWidget {
+class Opciones extends StatefulWidget {
   final List<dynamic> opciones;
 
   Opciones({@required this.opciones});
 
+  @override
+  _OpcionesState createState() => _OpcionesState();
+}
+
+class _OpcionesState extends State<Opciones> {
+  int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -14,11 +20,20 @@ class Opciones extends StatelessWidget {
       ),
     );
   }
-
+  
   List<Widget> _card(BuildContext context) {
-    return opciones.map((opcion) {
+    return widget.opciones.map((opcion) {
       return ListTile(
         title: Text(opcion.descripcion),
+        leading: Radio(
+            value: opcion.id,
+            groupValue: _value,
+            activeColor: Colors.green,
+            onChanged: (T) {
+              setState(() {
+                _value = T;
+              });
+            }),
       );
     }).toList();
   }

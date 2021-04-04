@@ -9,8 +9,14 @@ class MenuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
+        margin: EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 10.0),
         child: Column(
-          children: [_menu(context)],
+          
+          children: [
+            _title(context, 'Pago'),
+            _menu(context),
+            _button(context)
+            ],
         ),
       ),
     );
@@ -44,6 +50,7 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _title(BuildContext context, String texto) {
+
     final colorPrincipal = Theme.of(context).primaryColor;
     return Row(
       children: [
@@ -59,4 +66,29 @@ class MenuPage extends StatelessWidget {
       ],
     );
   }
+
+  Widget _button(BuildContext context){
+  final colorB = Theme.of(context).primaryColor;
+  return Material(
+      color: colorB,
+      elevation: 5.0,
+      borderRadius: BorderRadius.circular(20.0),
+      shadowColor: Color.fromARGB(250, 1, 24, 76),
+      child: MaterialButton(
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+          minWidth: 150.0,
+          onPressed: () {
+            
+          },
+          child: Text(
+            "Pagar",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold,
+                fontSize: 14.0,
+                decoration: TextDecoration.none,
+                color: Colors.white),
+          )));
+}
 }
