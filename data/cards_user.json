@@ -3,10 +3,10 @@
     "cards":[
         {  
             "id":1,
-            "descripcion": "pago_reembolso",
+            "descripcion": "Pago contra reembolso",
             "icono":"aaasaas",
             "data_card":{
-                "titular" : "",
+                "headline" : "",
                 "card_number" : "",
                 "cvv" : "",
                 "expiry_month" : "",
@@ -16,10 +16,10 @@
         }, 
         {   
             "id":2,
-            "descripcion": "paypal",
+            "descripcion": "Paypal",
             "icono":"aaasaas",
             "data_card": {
-                "titular" : "",
+                "headline" : "",
                 "card_number" : "",
                 "cvv" :"",
                 "expiry_month":"",
@@ -29,10 +29,10 @@
         },
         {   
             "id":3,
-            "descripcion": "visa_mastercard",
+            "descripcion": "Visa, Mastercard",
             "icono":"aaasaas",
             "data_card":{
-                    "titular" : "",
+                    "headline" : "",
                     "card_number" : "",
                     "cvv" : "",
                     "expiry_month" : "",
@@ -42,11 +42,11 @@
         },
         {   
             "id":4,
-            "descripcion": "conekta",
+            "descripcion": "Visa, Mastercard Conekta",
             "icono":"aaasaas",
             "data_card":
                 {     
-                "titular" : "",
+                "headline" : "",
                 "card_number" : "",
                 "cvv" : "",
                 "expiry_month" : "",

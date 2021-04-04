@@ -1,5 +1,7 @@
+import 'dart:ffi';
+
+import 'package:card_conekta/providers/conekta_provider.dart';
 import 'package:card_conekta/providers/menu_provider.dart';
-import 'package:card_conekta/widgets/appbar_custom_widget.dart';
 import 'package:card_conekta/widgets/opciones_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +13,7 @@ class MenuPage extends StatelessWidget {
       body: Container(
         margin: EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 10.0),
         child: Column(
-          
-          children: [
-            _title(context, 'Pago'),
-            _menu(context),
-            _button(context)
-            ],
+          children: [_title(context, 'Pago'), _menu(context), _button(context)],
         ),
       ),
     );
@@ -50,7 +47,6 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _title(BuildContext context, String texto) {
-
     final colorPrincipal = Theme.of(context).primaryColor;
     return Row(
       children: [
@@ -67,28 +63,41 @@ class MenuPage extends StatelessWidget {
     );
   }
 
-  Widget _button(BuildContext context){
-  final colorB = Theme.of(context).primaryColor;
-  return Material(
-      color: colorB,
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(20.0),
-      shadowColor: Color.fromARGB(250, 1, 24, 76),
-      child: MaterialButton(
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-          minWidth: 150.0,
-          onPressed: () {
-            
-          },
-          child: Text(
-            "Pagar",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-                decoration: TextDecoration.none,
-                color: Colors.white),
-          )));
-}
+  Widget _button(BuildContext context) {
+    final colorB = Theme.of(context).primaryColor;
+
+    return Material(
+        color: colorB,
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(20.0),
+        shadowColor: Color.fromARGB(250, 1, 24, 76),
+        child: MaterialButton(
+            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            minWidth: 150.0,
+            onPressed: () async {
+              if (menuProvider.optionSelect == 4) {
+                _pagarConekta(context);
+              }
+            },
+            child: Text(
+              "Pagar",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.0,
+                  decoration: TextDecoration.none,
+                  color: Colors.white),
+            )));
+  }
+
+  void _pagarConekta(BuildContext context) async {
+
+    if (tokenConekta.tokenCard != null) {
+      Navigator.pushNamed(context, 'pay');
+      
+    } else {
+      Navigator.pushNamed(context, 'new-card');
+    }
+  }
 }

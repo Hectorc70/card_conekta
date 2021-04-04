@@ -1,3 +1,4 @@
+import 'package:card_conekta/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 class Opciones extends StatefulWidget {
@@ -20,7 +21,7 @@ class _OpcionesState extends State<Opciones> {
       ),
     );
   }
-  
+
   List<Widget> _card(BuildContext context) {
     return widget.opciones.map((opcion) {
       return ListTile(
@@ -32,6 +33,7 @@ class _OpcionesState extends State<Opciones> {
             onChanged: (T) {
               setState(() {
                 _value = T;
+                menuProvider.optionSelect = T;
               });
             }),
       );

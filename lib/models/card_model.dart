@@ -34,7 +34,7 @@ class Opcion {
 }
 
 class Card {
-  String titular;
+  String headline;
   String cardNumber;
   int cvv;
   String expiryMonth;
@@ -42,7 +42,7 @@ class Card {
   String token;
 
   Card({
-    this.titular,
+    this.headline,
     this.cardNumber,
     this.cvv,
     this.expiryMonth,
@@ -51,7 +51,7 @@ class Card {
   });
 
   Card.fromJsonMap(Map<String, dynamic> json) {
-    titular = json['titular'];
+    headline = json['headline'];
     cardNumber = json['card_number'];
     cvv = json['cvv'];
     expiryMonth = json['expiry_month'];
